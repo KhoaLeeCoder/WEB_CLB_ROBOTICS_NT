@@ -96,6 +96,44 @@
             }
         }
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+        
+            if (button && mobileMenu) {
+                button.addEventListener('click', () => {
+                    // Chuyển đổi trạng thái hiển thị của Menu
+                 mobileMenu.classList.toggle('hidden');
+
+                    // Chuyển đổi icon (Hamburger <-> X)
+                    const [iconOpen, iconClose] = button.querySelectorAll('svg');
+                    iconOpen.classList.toggle('hidden');
+                    iconClose.classList.toggle('hidden');
+                });
+            }
+        });
+
+        // Hàm bảo vệ route "Thành viên" (redirect đến login hoặc dashboard/admin)
+        function redirectToLoginOrDashboard(event) {
+            event.preventDefault(); 
+        
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userRole = localStorage.getItem('userRole');
+
+            if (isLoggedIn === 'true') {
+                if (userRole === 'admin') {
+                    window.location.href = 'admin.html'; 
+                } else {
+                    window.location.href = 'dashboard.html'; 
+                }
+            } else {
+                alert('Vui lòng đăng nhập để truy cập trang Thành viên/Dashboard.');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
 </head>
 <body class="font-body bg-background-light text-gray-800">
     
