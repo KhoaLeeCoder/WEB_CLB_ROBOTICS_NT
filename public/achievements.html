@@ -32,6 +32,44 @@
             }
         }
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (button && mobileMenu) {
+                button.addEventListener('click', () => {
+                    // Chuyển đổi trạng thái hiển thị của Menu
+                    mobileMenu.classList.toggle('hidden');
+
+                    // Chuyển đổi icon (Hamburger <-> X)
+                    const [iconOpen, iconClose] = button.querySelectorAll('svg');
+                    iconOpen.classList.toggle('hidden');
+                    iconClose.classList.toggle('hidden');
+                });
+            }
+        });
+
+        // Hàm đã có để bảo vệ route "Thành viên"
+        function redirectToLoginOrDashboard(event) {
+            event.preventDefault(); 
+            
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userRole = localStorage.getItem('userRole');
+
+            if (isLoggedIn === 'true') {
+                if (userRole === 'admin') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'dashboard.html';
+                }
+            } else {
+                alert('Vui lòng đăng nhập để truy cập trang Thành viên/Dashboard.');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
 </head>
 <body class="font-body bg-background-light text-gray-800">
     
@@ -40,23 +78,52 @@
             <div class="flex justify-between h-16">
                 <div class="flex-shrink-0 flex items-center">
                     <svg class="h-8 w-8 text-primary-dark mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 10v2M19 10v2M7 10h10a1 1 0 011 1v3a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2m-6 12v2m6-2v2M5 10v2M19 10v2M7 10h10a1 1 0 011 1v3a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1z" />
                     </svg>
                     <span class="text-xl font-heading font-bold text-primary-dark">Robotics NT</span>
                 </div>
+            
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="./index.html" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Trang chủ</a>
-                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-primary-dark border-b-2 border-secondary-cyan transition duration-150">Thành tích</a>
-                    <a href="./activities.html" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Hoạt động</a>
-                    <a href="./members.html" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Thành viên</a>
+                    <a href="index.html#hero" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Trang chủ</a>
+                    <a href="./achievements.html" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Thành tích</a>
+                    <a href="index.html#activities" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Hoạt động</a>
+                    <a href="#" id="nav-thanhvien" onclick="redirectToLoginOrDashboard(event)" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Thành viên</a>
+                    <a href="./register.html" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Đăng ký</a>
                 </div>
-                <div class="flex items-center">
+
+                <div class="hidden sm:flex items-center">
                     <a href="./login.html" class="px-3 py-2 text-sm font-body font-medium text-gray-700 hover:text-primary-dark transition duration-150">Đăng nhập</a>
                     <a href="./register.html" class="ml-4 px-4 py-2 text-sm font-heading font-bold text-white bg-secondary-cyan rounded-lg shadow-md hover:opacity-90 transition duration-150">Join Club</a>
+                </div>
+
+                <div class="flex items-center sm:hidden">
+                    <button id="menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary-cyan" aria-controls="mobile-menu" aria-expanded="false">
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </nav>
     </header>
+
+<div class="sm:hidden hidden" id="mobile-menu">
+    <div class="pt-2 pb-3 space-y-1 bg-white shadow-lg border-t border-gray-200">
+        <a href="index.html#hero" class="block pl-5 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 border-l-4 border-transparent">Trang chủ</a>
+        <a href="./achievements.html" class="block pl-5 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 border-l-4 border-transparent">Thành tích</a>
+        <a href="index.html#activities" class="block pl-5 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 border-l-4 border-transparent">Hoạt động</a>
+        <a href="#" onclick="redirectToLoginOrDashboard(event)" class="block pl-5 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 border-l-4 border-transparent">Thành viên</a>
+        <a href="./register.html" class="block pl-5 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 border-l-4 border-transparent">Đăng ký</a>
+        
+        <div class="pt-4 border-t border-gray-100 px-4 space-y-2">
+            <a href="./login.html" class="block w-full text-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Đăng nhập</a>
+            <a href="./register.html" class="block w-full text-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-secondary-cyan hover:bg-opacity-90">Join Club</a>
+        </div>
+    </div>
+</div>
 
     <main class="py-12 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
