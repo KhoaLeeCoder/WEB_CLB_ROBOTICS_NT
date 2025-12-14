@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án & Thành tích - CLB Robotics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-6">Dự án & Thành tích CLB</h1>
+        
+        <a href="members.html" class="text-sm text-gray-500 hover:text-blue-500 mb-6 inline-block">
+            <i class="fas fa-arrow-left mr-2"></i> Quay lại Bảng điều khiển
+        </a>
+
+        <div class="flex border-b mb-6">
+            <button id="tab-projects" class="py-2 px-4 text-lg font-semibold text-white bg-blue-600 border-b-2 border-blue-600 rounded-t-lg">Dự án CLB</button>
+            <button id="tab-achievements" class="py-2 px-4 text-lg font-semibold text-gray-600 hover:text-blue-600 transition duration-150">Thành tích & Giải thưởng</button>
+        </div>
+
+        <div id="content-projects" class="space-y-6">
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm">
+                <h3 class="text-xl font-bold text-gray-800">1. Dự án: Robot Giao hàng Tự hành</h3>
+                <p class="text-sm text-gray-500 mb-2">Trạng thái: Đang phát triển | Nhóm trưởng: Nguyễn Văn Tèo</p>
+                <p class="text-gray-700">Sử dụng Arduino và cảm biến siêu âm để lập trình robot di chuyển tự động và tránh vật cản trong hành lang trường học.</p>
+                <div class="mt-3 flex space-x-2">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Arduino</span>
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">C++</span>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm">
+                <h3 class="text-xl font-bold text-gray-800">2. Dự án: Hệ thống Giám sát Nhà kính</h3>
+                <p class="text-sm text-gray-500 mb-2">Trạng thái: Hoàn thành (2024) | Nhóm trưởng: Trần Thị Bê</p>
+                <p class="text-gray-700">Theo dõi nhiệt độ, độ ẩm và ánh sáng bằng Raspberry Pi, gửi cảnh báo qua ứng dụng di động.</p>
+                <div class="mt-3 flex space-x-2">
+                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Raspberry Pi</span>
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full">Python</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-achievements" class="space-y-6 hidden">
+            <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-300 shadow-sm flex items-start space-x-4">
+                <i class="fas fa-trophy text-3xl text-yellow-600 mt-1"></i>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Giải Ba Cuộc thi Sáng tạo Khoa học Kỹ thuật Toàn quốc</h3>
+                    <p class="text-sm text-gray-500">Dự án: Robot Cứu hộ Đa năng | Ngày: 10/2025</p>
+                    <p class="text-gray-700">Đạt thành tích cao nhất trong lịch sử CLB. Tham gia bởi nhóm trưởng [Tên thành viên của bạn].</p>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-300 shadow-sm flex items-start space-x-4">
+                <i class="fas fa-medal text-3xl text-blue-600 mt-1"></i>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Giải Nhì - Vòng loại Robothon Khu vực</h3>
+                    <p class="text-sm text-gray-500">Nội dung: Lập trình Robot dò đường | Ngày: 04/2025</p>
+                    <p class="text-gray-700">Xuất sắc vượt qua 50 đội để tiến vào Vòng Chung kết.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const tabProjects = document.getElementById('tab-projects');
+        const tabAchievements = document.getElementById('tab-achievements');
+        const contentProjects = document.getElementById('content-projects');
+        const contentAchievements = document.getElementById('content-achievements');
+
+        function setActiveTab(activeTab, inactiveTab, activeContent, inactiveContent) {
+            activeTab.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+            activeTab.classList.remove('bg-white', 'text-gray-600');
+            
+            inactiveTab.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+            inactiveTab.classList.add('bg-white', 'text-gray-600');
+
+            activeContent.classList.remove('hidden');
+            inactiveContent.classList.add('hidden');
+        }
+
+        tabProjects.addEventListener('click', () => {
+            setActiveTab(tabProjects, tabAchievements, contentProjects, contentAchievements);
+        });
+
+        tabAchievements.addEventListener('click', () => {
+            setActiveTab(tabAchievements, tabProjects, contentAchievements, contentProjects);
+        });
+
+        // Đảm bảo tab Projects luôn là tab mặc định khi tải trang
+        setActiveTab(tabProjects, tabAchievements, contentProjects, contentAchievements);
+    </script>
+</body>
+</html>

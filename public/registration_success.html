@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Công</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-10 rounded-xl shadow-2xl w-full max-w-lg text-center transform transition-all duration-500 hover:shadow-3xl">
+        
+        <div class="mb-6">
+            <i class="fas fa-check-circle text-7xl text-green-500 animate-pulse-once"></i>
+        </div>
+        
+        <h2 class="text-3xl font-extrabold text-gray-800 mb-3">Đăng Ký Thành Công!</h2>
+        
+        <p class="text-gray-600 mb-8 text-lg">
+            Đơn đăng ký của bạn đã được gửi.
+        </p>
+
+        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500 mb-8">
+            <p class="font-semibold text-green-800">Vui lòng lưu ý:</p>
+            <p class="text-green-700 text-sm mt-1">
+                Ban quản trị sẽ xem xét đơn của bạn trong vòng 24 giờ. Chúng tôi sẽ thông báo qua email của bạn khi tài khoản được phê duyệt.
+            </p>
+        </div>
+
+        <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+            <i class="fas fa-home mr-2"></i>
+            Quay lại trang chủ
+        </a>
+    </div>
+
+    <style>
+        /* Tùy chỉnh nhỏ */
+        @keyframes pulse-once {
+            0% { transform: scale(0.9); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pulse-once {
+            animation: pulse-once 0.8s ease-out;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLB Robotics Nguyễn Trãi - Nơi hiện thực hóa ý tưởng công nghệ</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap');
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0D47A1', // Xanh dương đậm
+                        'secondary-cyan': '#00BCD4', // Xanh cyan
+                        'background-light': '#F4F7FA', // Xám nền
+                        'border-light': '#E0E0E0', // Xám đường nét
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'lg': '8px', // Bo tròn nhẹ 6-8px
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06)', // Shadow nhẹ
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script>
+        function redirectToLoginOrDashboard(event) {
+            event.preventDefault(); // Ngăn hành vi chuyển hướng mặc định của thẻ <a>
+        
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+        
+            if (isLoggedIn === 'true') {
+            // Đã đăng nhập -> Chuyển đến trang Dashboard
+            window.location.href = 'members.html';
+            } else {
+            // Chưa đăng nhập -> Chuyển đến trang Đăng nhập
+                alert('Vui lòng đăng nhập để truy cập trang Thành viên.');
+                window.location.href = 'login.html';
+            }
+        }
+    
+    // (Bạn có thể xóa hàm updateNavbarVisibility() nếu nó đang gây rối
+    // vì chúng ta không ẩn/hiện nữa, mà dùng Redirect)
+</script>
+</head>
+<body class="font-body bg-background-light text-gray-800">
+
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <svg class="h-8 w-8 text-primary-dark mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 10v2M19 10v2M7 10h10a1 1 0 011 1v3a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1z" />
+                    </svg>
+                    <span class="text-xl font-heading font-bold text-primary-dark">Robotics NT</span>
+                </div>
+                
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#hero" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-primary-dark border-b-2 border-secondary-cyan transition duration-150">Trang chủ</a>
+                    <a href="./achievements.html" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Thành tích</a>
+                    <a href="#activities" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Hoạt động</a>
+                    <a href="./members.html" id="nav-thanhvien" onclick="redirectToLoginOrDashboard(event)" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Thành viên</a>
+                    <a href="./register.html" class="inline-flex items-center px-1 pt-1 text-sm font-body font-medium text-gray-700 hover:text-primary-dark border-b-2 border-transparent hover:border-secondary-cyan transition duration-150">Đăng ký</a>
+                </div>
+
+                <div class="flex items-center">
+                    <a href="./login.html" class="px-3 py-2 text-sm font-body font-medium text-gray-700 hover:text-primary-dark transition duration-150">Đăng nhập</a>
+                    <a href="./register.html" class="ml-4 px-4 py-2 text-sm font-heading font-bold text-white bg-secondary-cyan rounded-lg shadow-md hover:opacity-90 transition duration-150">Join Club</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="relative bg-primary-dark py-24 sm:py-32 lg:py-40 overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('/IMG_3267.JPG');"></div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-4">
+                    CLB Robotics Nguyễn Trãi – 
+                    <br class="hidden sm:inline" />
+                    Nơi hiện thực hóa ý tưởng công nghệ
+                </h1>
+                
+                <p class="max-w-3xl mx-auto text-xl font-body mt-6 mb-10 text-gray-200">
+                    Khám phá, sáng tạo và chinh phục những cuộc thi Robotics & AI hàng đầu.
+                </p>
+                
+                <div class="flex justify-center space-x-4">
+                    <a
+                        href="#activities"
+                        class="group px-8 py-3 text-lg font-heading font-bold text-white rounded-lg shadow-lg 
+                            bg-gradient-to-r from-primary-dark to-secondary-cyan 
+                            hover:from-secondary-cyan hover:to-primary-dark transition duration-300 transform hover:scale-105 inline-flex items-center"
+                    >
+                        Xem hoạt động
+                        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                    <a
+                        href="./register.html"
+                        class="px-8 py-3 text-lg font-heading font-bold text-secondary-cyan bg-white rounded-lg shadow-lg hover:bg-gray-100 transition duration-300"
+                    >
+                        Đăng ký tham gia
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-8">
+                    <div class="rounded-lg overflow-hidden shadow-xl">
+                        <img src="/IMG_3267.JPG" alt="Ảnh đội Robotics CLB" class="w-full h-auto object-cover">
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-heading font-bold text-primary-dark mb-4">Giá trị cốt lõi</h3>
+                        <ul class="space-y-3 font-body text-gray-700">
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-secondary-cyan mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                <span>**Sáng tạo:** Khuyến khích ý tưởng mới, không ngừng đổi mới.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-secondary-cyan mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.21a4.8 4.8 0 012.322 1.258l-5.6 5.6a.75.75 0 00-1.06 0l-5.6-5.6a4.8 4.8 0 002.322-1.258A7.882 7.882 0 0112 5.002a7.882 7.882 0 013.618.788z" /></svg>
+                                <span>**Kỷ luật:** Làm việc có tổ chức, tuân thủ quy trình kỹ thuật.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-secondary-cyan mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.467 9.5 5 8 5a2 2 0 00-2 2v6l-2 2h4l-2 2h4l-2 2h4l-2 2h4v-2c0-1.04-1.353-2.096-3.75-2.096H10" /></svg>
+                                <span>**Học hỏi:** Không ngừng trau dồi kiến thức Robotics và AI.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-sm font-heading font-bold uppercase text-secondary-cyan tracking-wider">Về chúng tôi</span>
+                    <h2 class="text-4xl font-heading font-extrabold text-primary-dark mt-2 mb-6">
+                        Khám phá tiềm năng công nghệ
+                    </h2>
+                    <p class="text-lg font-body text-gray-700 mb-8">
+                        CLB Robotics Nguyễn Trãi được thành lập với sứ mệnh tạo ra môi trường thực hành chuyên sâu, nơi học sinh có thể áp dụng kiến thức STEM vào các dự án thực tế, từ thiết kế cơ khí, lập trình nhúng đến phát triển trí tuệ nhân tạo.
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="p-4 bg-white rounded-lg shadow-custom">
+                            <p class="text-3xl font-heading font-extrabold text-secondary-cyan">5+</p>
+                            <p class="text-sm font-body text-gray-600">Thành viên</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-custom">
+                            <p class="text-3xl font-heading font-extrabold text-secondary-cyan">2+</p>
+                            <p class="text-sm font-body text-gray-600">Giải thưởng</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-custom">
+                            <p class="text-3xl font-heading font-extrabold text-secondary-cyan">3</p>
+                            <p class="text-sm font-body text-gray-600">Năm hoạt động</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-heading font-extrabold text-primary-dark mb-12 text-center">
+                ⭐ Thành tích nổi bật
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="bg-white rounded-lg shadow-custom overflow-hidden p-6 hover:shadow-xl transition duration-300 border border-border-light">
+                    <svg class="h-8 w-8 text-secondary-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    <h3 class="text-xl font-heading font-bold text-primary-dark">ORC TOÀN QUỐC</h3>
+                    <div class="flex items-center text-gray-500 mb-4">
+                        <p class="font-body text-sm">2025</p>
+                    </div>
+                    <p class="text-2xl font-heading font-extrabold text-secondary-cyan my-3">
+                        Giải 3 ORC toàn quốc
+                    </p>
+                    <a href="./achievements.html" class="text-primary-dark font-body font-semibold text-sm hover:text-secondary-cyan transition duration-150 mt-4 inline-block">
+                        Xem chi tiết &rarr;
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-custom overflow-hidden p-6 hover:shadow-xl transition duration-300 border border-border-light">
+                    <svg class="h-8 w-8 text-secondary-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-xl font-heading font-bold text-primary-dark">AI HACKATHON 2025</h3>
+                    <div class="flex items-center text-gray-500 mb-4">
+                        <p class="font-body text-sm">11/2025</p>
+                    </div>
+                    <p class="text-2xl font-heading font-extrabold text-secondary-cyan my-3">
+                        Giải khuyến khích
+                    </p>
+                    <a href="./achievements.html" class="text-primary-dark font-body font-semibold text-sm hover:text-secondary-cyan transition duration-150 mt-4 inline-block">
+                        Xem chi tiết &rarr;
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-custom overflow-hidden p-6 hover:shadow-xl transition duration-300 border border-border-light">
+                    <svg class="h-8 w-8 text-secondary-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.21a4.8 4.8 0 012.322 1.258l-5.6 5.6a.75.75 0 01-1.06 0l-5.6-5.6a4.8 4.8 0 012.322-1.258A7.882 7.882 0 0012 5.002a7.882 7.882 0 003.618.788z" /></svg>
+                    <h3 class="text-xl font-heading font-bold text-primary-dark">FPTU AI & ROBOTICS CHALLENGE</h3>
+                    <div class="flex items-center text-gray-500 mb-4">
+                        <p class="font-body text-sm">2025</p>
+                    </div>
+                    <p class="text-2xl font-heading font-extrabold text-secondary-cyan my-3">
+                        TOP 4 Vòng Thi AI 
+                    </p>
+                    <a href="./achievements.html" class="text-primary-dark font-body font-semibold text-sm hover:text-secondary-cyan transition duration-150 mt-4 inline-block">
+                        Xem chi tiết &rarr;
+                    </a>
+                </div>
+
+                <div class="bg-primary-dark rounded-lg shadow-custom overflow-hidden p-6 flex flex-col justify-center items-center text-center hover:bg-opacity-90 transition duration-300 cursor-pointer">
+                    <a href="./achievements.html" class="flex flex-col items-center text-white">
+                        <svg class="h-10 w-10 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <span class="text-xl font-heading font-bold">Xem Tất Cả</span>
+                        <p class="text-sm font-body mt-1 opacity-80">Các danh hiệu của CLB</p>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="activities" class="bg-white py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-heading font-extrabold text-primary-dark mb-12 text-center">
+                    🗓️ Hoạt động tiêu biểu
+                </h2>
+                
+                <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-border-light h-full hidden md:block"></div>
+
+                    <div class="flex flex-col md:flex-row mb-12">
+                        <div class="md:w-1/2 md:pr-10 text-right">
+                            <h3 class="text-xl font-heading font-bold text-primary-dark">ORC TOÀN QUỐC</h3>
+                            <p class="text-sm text-secondary-cyan font-semibold">12/2025</p>
+                            <p class="text-gray-600 mt-2">Bước vào hành trình giành huy chương đồng của các thành viên đội trường THPT Nguyễn Trãi</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-10 relative">
+                            <div class="hidden md:block absolute left-0 top-0 w-3 h-3 bg-secondary-cyan rounded-full border-4 border-white transform -translate-x-1/2"></div>
+                            <div class="rounded-lg overflow-hidden shadow-custom mt-4 md:mt-0">
+                                <img src="./IMG_3533.JPG" alt="Top 3 ORC toàn quốc" class="w-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row-reverse mb-12">
+                        <div class="md:w-1/2 md:pl-10 text-left">
+                            <h3 class="text-xl font-heading font-bold text-primary-dark">FPTU AI & ROBOTICS CHALLENGE 2025</h3>
+                            <p class="text-sm text-secondary-cyan font-semibold">06/2025</p>
+                            <p class="text-gray-600 mt-2">Đội tuyển tham gia cuộc thi FPTU AI & ROBOTICS CHALLENGE, với quyết tâm cao và ý chí quyết thắng</p>
+                        </div>
+                        <div class="md:w-1/2 md:pr-10 relative">
+                            <div class="hidden md:block absolute right-0 top-0 w-3 h-3 bg-secondary-cyan rounded-full border-4 border-white transform translate-x-1/2"></div>
+                            <div class="rounded-lg overflow-hidden shadow-custom mt-4 md:mt-0">
+                                <img src="./IMG_3532.JPG" alt="Hackathon" class="w-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row mb-12">
+                        <div class="md:w-1/2 md:pr-10 text-right">
+                            <h3 class="text-xl font-heading font-bold text-primary-dark">AI Hackathon 2025</h3>
+                            <p class="text-sm text-secondary-cyan font-semibold">11/2025</p>
+                            <p class="text-gray-600 mt-2">Tham dự vòng chung kết AI Hackathon 2025</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-10 relative">
+                            <div class="hidden md:block absolute left-0 top-0 w-3 h-3 bg-secondary-cyan rounded-full border-4 border-white transform -translate-x-1/2"></div>
+                            <div class="rounded-lg overflow-hidden shadow-custom mt-4 md:mt-0">
+                                <img src="/20251128_174318_1.jpg" alt="Training C++" class="w-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-border-light h-full hidden md:block"></div>
+                    
+                    <div class="text-center pt-8 relative z-10"> 
+                        <a href="./activities.html" class="inline-block px-6 py-2 text-md font-heading font-bold text-white bg-primary-dark rounded-lg shadow-md hover:bg-opacity-90 transition duration-150">
+                            Xem tất cả hoạt động
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="bg-primary-dark text-white mt-12">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <svg class="h-8 w-8 text-secondary-cyan mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 10v2M19 10v2M7 10h10a1 1 0 011 1v3a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1z" />
+                            </svg>
+                            <span class="text-xl font-heading font-bold text-secondary-cyan">Robotics NT</span>
+                        </div>
+                        <p class="text-sm font-body text-gray-300">Nơi khơi nguồn đam mê công nghệ và sáng tạo.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-heading font-bold mb-4 text-secondary-cyan">Thông tin</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="text-sm hover:text-secondary-cyan">Giới thiệu CLB</a></li>
+                            <li><a href="#" class="text-sm hover:text-secondary-cyan">Điều lệ</a></li>
+                            <li><a href="#" class="text-sm hover:text-secondary-cyan">Liên hệ</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-heading font-bold mb-4 text-secondary-cyan">Khám phá</h3>
+                        <ul class="space-y-2">
+                            <li><a href="./achievements.html" class="text-sm hover:text-secondary-cyan">Thành tích</a></li>
+                            <li><a href="./activities.html" class="text-sm hover:text-secondary-cyan">Hoạt động</a></li>
+                            <li><a href="./members.html" class="text-sm hover:text-secondary-cyan">Ban Chủ nhiệm</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-heading font-bold mb-4 text-secondary-cyan">Kết nối</h3>
+                        <p class="text-sm font-body text-gray-300 mb-4">Email: contact@roboticsnt.edu.vn</p>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" target="_blank" class="text-gray-300 hover:text-secondary-cyan">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04C6.54 2.04 2.04 6.54 2.04 12c0 5.06 3.69 9.29 8.54 9.92V14h-2.54v-3h2.54v-2.1c0-2.52 1.54-3.92 3.78-3.92 1.08 0 2.23.19 2.23.19v2.44h-1.25c-1.24 0-1.63.77-1.63 1.56V11h2.78l-.45 3h-2.33v7.92c4.85-.63 8.54-4.86 8.54-9.92 0-5.46-4.5-9.96-9.96-9.96z"></path></svg>
+                            </a>
+                            <a href="#" target="_blank" class="text-gray-300 hover:text-secondary-cyan">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.193a2.41 2.41 0 00-1.72-.887c-.89-.12-2.903-.284-6.883-.284-3.98 0-5.993.164-6.883.284a2.41 2.41 0 00-1.72.887c-.21.286-.412.637-.604 1.052C1.986 5.2 2 8.514 2 12s-.014 6.8-.216 7.755c.192.415.394.766.604 1.052a2.41 2.41 0 001.72.887c.89.12 2.903.284 6.883.284 3.98 0 5.993-.164 6.883-.284a2.41 2.41 0 001.72-.887c.21-.286.412-.637.604-1.052C22.014 18.8 22 15.486 22 12s.014-6.8-.216-7.755c-.192-.415-.394-.766-.604-1.052zM10 16.5l6-4.5-6-4.5v9z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                    <p class="text-sm text-gray-400">&copy; 2025 CLB Robotics Nguyễn Trãi. Bảo lưu mọi quyền.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>
